@@ -27,7 +27,7 @@ export default function CreateModal(props: any) {
     props.toggleCreateMode;
   };
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen bg-gray-500 bg-opacity-60 z-10">
+    <div className="fixed top-0 left-0 w-screen h-screen bg-gray-500 bg-opacity-60 z-10 backdrop-blur-sm">
       <div
         className="fixed top-0 h-1/5 w-screen z-10"
         onClick={() => props.toggleCreatedMode()}
@@ -40,15 +40,18 @@ export default function CreateModal(props: any) {
           </span>
         </h2>
         <form onSubmit={handleSubmit}>
-          <div className="flex items-center my-6">
-            <input
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              type="checkbox"
-              checked={todo}
-              onChange={() => handleChangeTodo()}
-            />
-            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-              is this todo?
+          <div className="mt-6 mb-4">
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                className="sr-only peer"
+                checked={todo}
+                onChange={() => handleChangeTodo()}
+              />
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Todo
+              </span>
             </label>
           </div>
           <div className="relative z-0 w-full mb-6 group">
@@ -66,6 +69,7 @@ export default function CreateModal(props: any) {
           </div>
           <div className="relative z-0 w-full mb-6 group">
             <textarea
+              rows={1}
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required

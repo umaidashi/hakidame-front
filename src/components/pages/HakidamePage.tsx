@@ -2,7 +2,6 @@ import { useState } from "react";
 import Layout from "../layout/Layout";
 
 export default function HakidameList({ hakidame }: any) {
-  console.log(hakidame.todo);
   return (
     <Layout>
       <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
@@ -18,6 +17,7 @@ export default function HakidameList({ hakidame }: any) {
               type="checkbox"
               checked={hakidame.todo}
               className="w-6 h-6 rounded"
+              // onChange={console.log("hoge")}
             />
             <span className="ml-2">Rounded checkbox</span>
           </label>

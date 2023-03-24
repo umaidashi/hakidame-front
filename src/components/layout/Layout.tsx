@@ -26,10 +26,10 @@ export default function Layout(props: {
     setIsCreateMode(!isCreateMode);
   };
   return (
-    <div className="h-screen w-screen bg-gray-100">
+    <div className="h-full min-h-screen w-screen bg-gray-100 pb-[62px]">
       <Header />
-      <div className="h-screen w-screen flex justify-center items-center py-3">
-        <div className="h-full w-full p-4 m-3 bg-white rounded-md">
+      <div className="h-full w-screen flex justify-center items-center pb-3">
+        <div className="h-full w-screen p-4 m-3 bg-white rounded-md">
           {props.children}
         </div>
       </div>
