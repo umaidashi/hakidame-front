@@ -6,7 +6,7 @@ export default function Page({ hakidame }: any) {
   return (
     <>
       <Head>
-        <title>{} | はきだめ</title>
+        <title>{hakidame.title} | はきだめ</title>
       </Head>
       <HakidamePage hakidame={hakidame} />
     </>
