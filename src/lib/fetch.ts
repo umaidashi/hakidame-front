@@ -80,7 +80,8 @@ export async function postHakidameData(params: {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "POST,GET,PUT,DELETE",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Headers":
+        "Content-Type,Access-Control-Allow-Methods",
       "Content-Type": "application/json",
     },
   });
@@ -109,7 +110,8 @@ export async function updateHakidameData(params: {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "POST,GET,PUT,DELETE",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Headers":
+        "Content-Type,Access-Control-Allow-Methods",
       "Content-Type": "application/json",
     },
   });
@@ -121,7 +123,8 @@ export async function deleteHakidameData(params: { id: number }) {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "POST,GET,PUT,DELETE",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Headers":
+        "Content-Type,Access-Control-Allow-Methods",
       "Content-Type": "application/json",
     },
   });
