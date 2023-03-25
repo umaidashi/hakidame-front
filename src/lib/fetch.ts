@@ -31,6 +31,35 @@ const getCircularReplacer = () => {
   };
 };
 
+const toISOString = (s: string) => {
+  var months: any = {
+    jan: "01",
+    feb: "02",
+    mar: "03",
+    apr: "04",
+    may: "05",
+    jun: "06",
+    jul: "07",
+    aug: "08",
+    sep: "09",
+    oct: "10",
+    nov: "11",
+    dec: "12",
+  };
+  var b = s.split(" ");
+
+  return (
+    b[3] +
+    "-" +
+    months[b[1].toLowerCase()] +
+    "-" +
+    ("0" + b[2]).slice(-2) +
+    "T" +
+    b[4] +
+    b[5].substr(3)
+  );
+};
+
 export async function getAllHakidamesData() {
   const res = await axios.get(`${SERVER_URL}hakidame/`, GetDefaultHeader());
   const hakidames = await JSON.parse(
@@ -98,7 +127,7 @@ export async function postHakidameData(params: {
     todo,
     done,
     bookmark,
-    pub_date: String(new Date()),
+    pub_date: toISOString(String(new Date())),
   };
 
   const res = await axios.post(
@@ -124,7 +153,7 @@ export async function updateHakidameData(params: {
     todo,
     done,
     bookmark,
-    pub_date: String(new Date()),
+    pub_date: toISOString(String(new Date())),
   };
 
   await axios.put(`${SERVER_URL}hakidame/${id}/`, body, GetDefaultHeader());
