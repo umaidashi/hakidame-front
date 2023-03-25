@@ -98,7 +98,7 @@ export async function postHakidameData(params: {
     todo,
     done,
     bookmark,
-    pub_date: "2023-12-12",
+    pub_date: String(new Date()),
   };
 
   const res = await axios.post(
@@ -124,7 +124,7 @@ export async function updateHakidameData(params: {
     todo,
     done,
     bookmark,
-    pub_date: "2023-12-12",
+    pub_date: String(new Date()),
   };
 
   await axios.put(`${SERVER_URL}hakidame/${id}/`, body, GetDefaultHeader());
