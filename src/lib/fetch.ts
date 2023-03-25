@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_URL = "http://127.0.0.1:8000/";
+const SERVER_URL = process.env.SERVER_URL;
 
 const getCircularReplacer = () => {
   const seen = new WeakSet();
@@ -17,6 +17,14 @@ const getCircularReplacer = () => {
 
 export async function getAllHakidamesData() {
   const res = await axios.get(`${SERVER_URL}hakidame/`);
+  const hakidames = await JSON.parse(
+    JSON.stringify(res, getCircularReplacer())
+  );
+  return hakidames;
+}
+
+export async function getAllHakidamesTodoData() {
+  const res = await axios.get(`${SERVER_URL}hakidame/todo/`);
   const hakidames = await JSON.parse(
     JSON.stringify(res, getCircularReplacer())
   );
