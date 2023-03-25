@@ -26,11 +26,11 @@ export default function List({ hakidames, isTodo }: any) {
                   />
                   <label
                     htmlFor="react-option"
-                    className="inline-flex items-center justify-center w-[16px] h-[16px] p-2 text-gray-500 bg-white border-2 border-gray-200 rounded-md cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-white peer-checked:bg-blue-700 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                    className="inline-flex items-center justify-center w-[10px] h-[10px] p-1.5 text-gray-500 bg-white border-2 border-gray-200 rounded-md cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-white peer-checked:bg-blue-700 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
                       <svg
-                        className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 pt-1"
+                        className="w-4 h-4 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500 pt-1"
                         fill="white"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
