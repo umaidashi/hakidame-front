@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 export default function BottomNav(props: any) {
   const router = useRouter();
   const handlePage = (path: string) => {
-    router.push(path);
+    router.push(`/${path}`);
   };
   return (
     <div className="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600">

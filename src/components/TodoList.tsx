@@ -15,7 +15,7 @@ export default function TodoList({ hakidames }: any) {
           onClick={() => toHakidamePage(h.id)}
         >
           <div className="flex items-center">
-            <input type="checkbox" className="mr-2" />
+            <input type="checkbox" className="mr-2 rounded-full" />
             <p>{h.title}</p>
           </div>
           <span className="text-xs">#{h.todo ? "todo" : "hakidame"}</span>
