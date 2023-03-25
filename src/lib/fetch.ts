@@ -10,7 +10,7 @@ export const GetDefaultHeader = () => {
   console.log(csrfToken, Cookies);
   return {
     mode: "cors",
-    credentials: "include",
+    redential: "include",
     headers: {
       "X-CSRFToken": csrfToken,
       "Content-Type": "application/json",
