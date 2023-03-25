@@ -1,6 +1,18 @@
 import axios from "axios";
+import Cookies from "js-cookie";
+
+axios.defaults.withCredentials = true;
 
 const SERVER_URL = process.env.SERVER_URL;
+
+export const GetDefaultHeader = () => {
+  const csrfToken = Cookies.get("csrftoken");
+  return {
+    headers: {
+      "X-CSRFToken": csrfToken,
+    },
+  };
+};
 
 const getCircularReplacer = () => {
   const seen = new WeakSet();
@@ -76,9 +88,11 @@ export async function postHakidameData(params: {
     pub_date: "2023-12-12",
   };
 
-  const res = await axios.post(`${SERVER_URL}hakidame/`, body, {
-    headers: { "Content-type": "application/json" },
-  });
+  const res = await axios.post(
+    `${SERVER_URL}hakidame/`,
+    body,
+    GetDefaultHeader()
+  );
   const hakidame = await JSON.parse(JSON.stringify(res, getCircularReplacer()));
   return hakidame;
 }
@@ -100,14 +114,10 @@ export async function updateHakidameData(params: {
     pub_date: "2023-12-12",
   };
 
-  await axios.put(`${SERVER_URL}hakidame/${id}/`, body, {
-    headers: { "Content-type": "application/json" },
-  });
+  await axios.put(`${SERVER_URL}hakidame/${id}/`, body, GetDefaultHeader());
 }
 export async function deleteHakidameData(params: { id: number }) {
   const { id } = params;
 
-  await axios.delete(`${SERVER_URL}hakidame/${id}/`, {
-    headers: { "Content-type": "application/json" },
-  });
+  await axios.delete(`${SERVER_URL}hakidame/${id}/`, GetDefaultHeader());
 }
