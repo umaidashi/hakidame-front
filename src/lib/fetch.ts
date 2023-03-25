@@ -110,7 +110,8 @@ export async function updateHakidameData(params: {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "access-control-allow-methods": "POST,GET,PUT,DELETE",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Headers":
+        "Content-Type,access-control-allow-methods",
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
@@ -122,7 +123,8 @@ export async function deleteHakidameData(params: { id: number }) {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "access-control-allow-methods": "POST,GET,PUT,DELETE",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Headers":
+        "Content-Type,access-control-allow-methods",
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
