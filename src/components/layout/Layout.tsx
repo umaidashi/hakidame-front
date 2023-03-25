@@ -28,7 +28,7 @@ export default function Layout(props: {
   return (
     <div className="h-full min-h-screen w-screen bg-gray-100 pb-[62px]">
       <Header />
-      <div className="h-full w-screen flex justify-center items-center pb-3">
+      <div className="h-full w-screen max-w-[400px] flex justify-center items-center pb-3">
         <div className="h-full w-screen p-4 m-3 bg-white rounded-md">
           {props.children}
         </div>
