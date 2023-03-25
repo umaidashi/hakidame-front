@@ -7,7 +7,7 @@ const SERVER_URL = process.env.SERVER_URL;
 
 export const GetDefaultHeader = () => {
   const csrfToken = Cookies.get("csrftoken");
-  console.log(csrfToken);
+  console.log(csrfToken, Cookies);
   return {
     mode: "cors",
     credentials: "include",
@@ -32,7 +32,7 @@ const getCircularReplacer = () => {
 };
 
 export async function getAllHakidamesData() {
-  const res = await axios.get(`${SERVER_URL}hakidame/`);
+  const res = await axios.get(`${SERVER_URL}hakidame/`, GetDefaultHeader());
   const hakidames = await JSON.parse(
     JSON.stringify(res, getCircularReplacer())
   );
@@ -40,7 +40,10 @@ export async function getAllHakidamesData() {
 }
 
 export async function getAllHakidamesTodoData() {
-  const res = await axios.get(`${SERVER_URL}hakidame/todo/`);
+  const res = await axios.get(
+    `${SERVER_URL}hakidame/todo/`,
+    GetDefaultHeader()
+  );
   const hakidames = await JSON.parse(
     JSON.stringify(res, getCircularReplacer())
   );
@@ -48,7 +51,10 @@ export async function getAllHakidamesTodoData() {
 }
 
 export async function getAllHakidamesBookmarkData() {
-  const res = await axios.get(`${SERVER_URL}hakidame/bookmark/`);
+  const res = await axios.get(
+    `${SERVER_URL}hakidame/bookmark/`,
+    GetDefaultHeader()
+  );
   const hakidames = await JSON.parse(
     JSON.stringify(res, getCircularReplacer())
   );
@@ -56,7 +62,7 @@ export async function getAllHakidamesBookmarkData() {
 }
 
 export async function getAllHakidameIds() {
-  const res = await axios.get(`${SERVER_URL}hakidame/`);
+  const res = await axios.get(`${SERVER_URL}hakidame/`, GetDefaultHeader());
   const hakidames: any[] = await JSON.parse(
     JSON.stringify(res, getCircularReplacer())
   );
@@ -70,7 +76,10 @@ export async function getAllHakidameIds() {
 }
 
 export async function getHakidameData(id: number) {
-  const res = await axios.get(`${SERVER_URL}hakidame/${id}`);
+  const res = await axios.get(
+    `${SERVER_URL}hakidame/${id}`,
+    GetDefaultHeader()
+  );
   const hakidame = await JSON.parse(JSON.stringify(res, getCircularReplacer()));
   return hakidame;
 }
