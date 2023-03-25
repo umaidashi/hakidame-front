@@ -77,7 +77,7 @@ export async function postHakidameData(params: {
   };
 
   const res = await axios.post(`${SERVER_URL}hakidame/`, body, {
-    headers: { "Content-type": "text/plain" },
+    headers: { "Content-type": "application/json" },
   });
   const hakidame = await JSON.parse(JSON.stringify(res, getCircularReplacer()));
   return hakidame;
@@ -101,13 +101,13 @@ export async function updateHakidameData(params: {
   };
 
   await axios.put(`${SERVER_URL}hakidame/${id}/`, body, {
-    headers: { "Content-type": "text/plain" },
+    headers: { "Content-type": "application/json" },
   });
 }
 export async function deleteHakidameData(params: { id: number }) {
   const { id } = params;
 
   await axios.delete(`${SERVER_URL}hakidame/${id}/`, {
-    headers: { "Content-type": "text/plain" },
+    headers: { "Content-type": "application/json" },
   });
 }
