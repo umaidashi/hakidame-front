@@ -31,6 +31,14 @@ export async function getAllHakidamesTodoData() {
   return hakidames;
 }
 
+export async function getAllHakidamesBookmarkData() {
+  const res = await axios.get(`${SERVER_URL}hakidame/bookmark/`);
+  const hakidames = await JSON.parse(
+    JSON.stringify(res, getCircularReplacer())
+  );
+  return hakidames;
+}
+
 export async function getAllHakidameIds() {
   const res = await axios.get(`${SERVER_URL}hakidame/`);
   const hakidames: any[] = await JSON.parse(
@@ -56,17 +64,44 @@ export async function postHakidameData(params: {
   detail: string;
   todo: boolean;
   done: boolean;
+  bookmark: boolean;
 }) {
-  const { title, detail, todo, done } = params;
+  const { title, detail, todo, done, bookmark } = params;
   const body = {
     title,
     detail,
     todo,
     done,
+    bookmark,
     pub_date: "2023-12-12",
   };
 
   const res = await axios.post(`${SERVER_URL}hakidame/`, body);
   const hakidame = await JSON.parse(JSON.stringify(res, getCircularReplacer()));
   return hakidame;
+}
+export async function updateHakidameData(params: {
+  id: number;
+  title: string;
+  detail: string;
+  todo: boolean;
+  done: boolean;
+  bookmark: boolean;
+}) {
+  const { id, title, detail, todo, done, bookmark } = params;
+  const body = {
+    title,
+    detail,
+    todo,
+    done,
+    bookmark,
+    pub_date: "2023-12-12",
+  };
+
+  await axios.put(`${SERVER_URL}hakidame/${id}/`, body);
+}
+export async function deleteHakidameData(params: { id: number }) {
+  const { id } = params;
+
+  await axios.delete(`${SERVER_URL}hakidame/${id}/`);
 }

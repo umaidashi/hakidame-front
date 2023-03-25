@@ -30,6 +30,6 @@ export async function getStaticProps({ params }: any) {
   const hakidame = res.data;
   return {
     props: { hakidame },
-    revalidate: 3,
+    revalidate: 1,
   };
 }

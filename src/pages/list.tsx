@@ -21,6 +21,6 @@ export async function getStaticProps() {
   const hakidames = res.data;
   return {
     props: { hakidames },
-    revalidate: 3,
+    revalidate: 1,
   };
 }

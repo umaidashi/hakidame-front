@@ -1,11 +1,15 @@
+import { deleteHakidameData, updateHakidameData } from "@/lib/fetch";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Layout from "../layout/Layout";
 
 export default function HakidameList({ hakidame }: any) {
+  const router = useRouter();
   const [newTitle, setNewTitle] = useState(hakidame.title);
   const [newDetail, setNewDetail] = useState(hakidame.detail);
   const [newTodo, setNewTodo] = useState(hakidame.todo);
   const [newDone, setNewDone] = useState(hakidame.done);
+  const [newBookmark, setNewBookmark] = useState(hakidame.bookmark);
 
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
@@ -21,6 +25,9 @@ export default function HakidameList({ hakidame }: any) {
   const handleChangeDone = () => {
     setNewDone(!newDone);
   };
+  const handleBookmark = () => {
+    setNewBookmark(!newBookmark);
+  };
 
   const toggleMenuVisible = () => {
     setIsMenuVisible(!isMenuVisible);
@@ -31,16 +38,22 @@ export default function HakidameList({ hakidame }: any) {
     setNewDetail(hakidame.detail);
     setNewTodo(hakidame.todo);
     setNewDone(hakidame.done);
+    setNewBookmark(hakidame.bookmark);
   };
 
   const handleSave = () => {
-    console.log("save");
+    updateHakidameData({
+      id: hakidame.id,
+      title: newTitle,
+      detail: newDetail,
+      todo: newTodo,
+      done: newDone,
+      bookmark: newBookmark,
+    });
   };
   const handleDelete = () => {
-    console.log("Delete");
-  };
-  const handleBookmark = () => {
-    console.log("Bookmark");
+    deleteHakidameData({ id: hakidame.id });
+    router.back();
   };
 
   const isEdited =

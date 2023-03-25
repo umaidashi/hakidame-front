@@ -1,5 +1,5 @@
 import Layout from "../layout/Layout";
-import TodoList from "../TodoList";
+import List from "../List";
 
 export default function Todo({ hakidames }: any) {
   console.log(hakidames);
@@ -9,7 +9,7 @@ export default function Todo({ hakidames }: any) {
         Todo
       </h2>
       <hr />
-      <TodoList hakidames={hakidames} />
+      <List hakidames={hakidames}isTodo={true} />
     </Layout>
   );
 }
