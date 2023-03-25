@@ -1,25 +1,19 @@
 import HakidameList from "@/components/pages/HakidameList";
 import Head from "next/head";
-import { getAllHakidamesData } from "@/lib/fetch";
-import { useRouter } from "next/router";
+import axios from "axios";
+import useSWR from "swr";
+const SERVER_URL = process.env.SERVER_URL;
 
-export default function Home({ hakidames }: any) {
-  const router = useRouter();
+const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+
+export default function Home() {
+  const { data: data, isLoading } = useSWR(`${SERVER_URL}hakidame/`, fetcher);
   return (
     <>
       <Head>
         <title>はきだめ | umaidashi</title>
       </Head>
-      <HakidameList hakidames={hakidames} />
+      <HakidameList hakidames={data} isLoading={isLoading} />
     </>
   );
-}
-
-export async function getStaticProps() {
-  const res = await getAllHakidamesData();
-  const hakidames = res.data;
-  return {
-    props: { hakidames },
-    revalidate: 1,
-  };
 }

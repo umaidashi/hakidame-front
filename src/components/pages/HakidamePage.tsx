@@ -50,6 +50,7 @@ export default function HakidameList({ hakidame }: any) {
       done: newDone,
       bookmark: newBookmark,
     });
+    router.back();
   };
   const handleDelete = () => {
     deleteHakidameData({ id: hakidame.id });

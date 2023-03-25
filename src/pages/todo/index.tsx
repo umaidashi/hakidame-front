@@ -1,15 +1,11 @@
 import Todo from "@/components/pages/Todo";
-import { getAllHakidamesTodoData } from "@/lib/fetch";
+import axios from "axios";
+import useSWR from "swr";
+const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+const SERVER_URL = process.env.SERVER_URL;
 
-export default function Page({ hakidames }: any) {
-  return <Todo hakidames={hakidames} />;
-}
+export default function Page() {
+  const { data, isLoading } = useSWR(`${SERVER_URL}hakidame/todo`, fetcher);
 
-export async function getStaticProps() {
-  const res = await getAllHakidamesTodoData();
-  const hakidames = res.data;
-  return {
-    props: { hakidames },
-    revalidate: 3,
-  };
+  return <Todo hakidames={data} isLoading={isLoading} />;
 }
