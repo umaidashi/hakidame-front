@@ -7,9 +7,13 @@ const SERVER_URL = process.env.SERVER_URL;
 
 export const GetDefaultHeader = () => {
   const csrfToken = Cookies.get("csrftoken");
+  console.log(csrfToken);
   return {
+    mode: "cors",
+    credentials: "include",
     headers: {
       "X-CSRFToken": csrfToken,
+      "Content-Type": "application/json",
     },
   };
 };
