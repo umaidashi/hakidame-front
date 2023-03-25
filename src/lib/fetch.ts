@@ -76,7 +76,14 @@ export async function postHakidameData(params: {
     pub_date: "2023-12-12",
   };
 
-  const res = await axios.post(`${SERVER_URL}hakidame/`, body);
+  const res = await axios.post(`${SERVER_URL}hakidame/`, body, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST,GET,PUT,DELETE",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Content-Type": "application/json",
+    },
+  });
   const hakidame = await JSON.parse(JSON.stringify(res, getCircularReplacer()));
   return hakidame;
 }
@@ -98,10 +105,24 @@ export async function updateHakidameData(params: {
     pub_date: "2023-12-12",
   };
 
-  await axios.put(`${SERVER_URL}hakidame/${id}/`, body);
+  await axios.put(`${SERVER_URL}hakidame/${id}/`, body, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST,GET,PUT,DELETE",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Content-Type": "application/json",
+    },
+  });
 }
 export async function deleteHakidameData(params: { id: number }) {
   const { id } = params;
 
-  await axios.delete(`${SERVER_URL}hakidame/${id}/`);
+  await axios.delete(`${SERVER_URL}hakidame/${id}/`, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST,GET,PUT,DELETE",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Content-Type": "application/json",
+    },
+  });
 }
