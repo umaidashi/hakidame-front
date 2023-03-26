@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import Layout from "../layout/Layout";
 import List from "../List";
+import ListLoading from "../ListLoading";
 
 export default function HakidameList({
   hakidames,
@@ -10,6 +11,7 @@ export default function HakidameList({
   isLoading: boolean;
 }) {
   const router = useRouter();
+  console.log(isLoading);
 
   return (
     <Layout>
@@ -17,7 +19,7 @@ export default function HakidameList({
         List
       </h2>
       <hr />
-      {isLoading ? <div>loading</div> : <List hakidames={hakidames} />}
+      {isLoading ? <ListLoading /> : <List hakidames={hakidames} />}
     </Layout>
   );
 }

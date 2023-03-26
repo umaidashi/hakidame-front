@@ -1,5 +1,6 @@
 import Layout from "../layout/Layout";
 import List from "../List";
+import ListLoading from "../ListLoading";
 
 export default function Bookmark({
   hakidames,
@@ -14,7 +15,7 @@ export default function Bookmark({
         Bookmark
       </h2>
       <hr />
-      {isLoading ? <div>loading</div> : <List hakidames={hakidames} />}
+      {isLoading ? <ListLoading/> : <List hakidames={hakidames} />}
     </Layout>
   );
 }
