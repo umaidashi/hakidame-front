@@ -27,6 +27,14 @@ export default function HakidameList({ hakidame }: any) {
   };
   const handleBookmark = () => {
     setNewBookmark(!newBookmark);
+    updateHakidameData({
+      id: hakidame.id,
+      title: hakidame.title,
+      detail: hakidame.detail,
+      todo: hakidame.todo,
+      done: hakidame.done,
+      bookmark: !newBookmark,
+    });
   };
 
   const toggleMenuVisible = () => {
