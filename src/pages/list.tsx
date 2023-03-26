@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>はきだめ | umaidashi</title>
+        <title>List | はきだめ</title>
       </Head>
       <HakidameList hakidames={data} isLoading={isLoading} />
     </>
