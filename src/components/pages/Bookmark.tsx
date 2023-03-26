@@ -15,7 +15,11 @@ export default function Bookmark({
         Bookmark
       </h2>
       <hr />
-      {isLoading ? <ListLoading/> : <List hakidames={hakidames} />}
+      {isLoading ? (
+        <ListLoading />
+      ) : (
+        <List hakidames={hakidames} isBookmark={true} />
+      )}
     </Layout>
   );
 }

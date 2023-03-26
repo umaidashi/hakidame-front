@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export default function List({ hakidames, isTodo }: any) {
+export default function List({ hakidames, isTodo, isBookmark }: any) {
   const router = useRouter();
 
   const toHakidamePage = (id: number) => {
@@ -49,7 +49,7 @@ export default function List({ hakidames, isTodo }: any) {
                     </label>
                   )}
                   <p>{h.title}</p>
-                  {h.bookmark && (
+                  {h.bookmark && !isBookmark && (
                     <svg
                       className="w-4 h-4 ml-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                       fill="blue"
