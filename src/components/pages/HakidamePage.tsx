@@ -1,6 +1,7 @@
-import { deleteHakidameData, updateHakidameData } from "@/lib/fetch";
+import { deleteHakidameData, getTags, updateHakidameData } from "@/lib/fetch";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { mutate } from "swr";
 import Layout from "../layout/Layout";
 
 export default function HakidameList({ hakidame, isLoading }: any) {
@@ -58,10 +59,26 @@ export default function HakidameList({ hakidame, isLoading }: any) {
       done: newDone,
       bookmark: newBookmark,
     });
+    mutate({
+      id: hakidame.id,
+      title: newTitle,
+      detail: newDetail,
+      todo: newTodo,
+      done: newDone,
+      bookmark: newBookmark,
+    });
     router.back();
   };
   const handleDelete = () => {
     deleteHakidameData({ id: hakidame.id });
+    mutate({
+      id: hakidame.id,
+      title: newTitle,
+      detail: newDetail,
+      todo: newTodo,
+      done: newDone,
+      bookmark: newBookmark,
+    });
     router.back();
   };
 

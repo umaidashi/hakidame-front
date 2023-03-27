@@ -7,7 +7,6 @@ const SERVER_URL = process.env.SERVER_URL;
 
 export const GetDefaultHeader = () => {
   const csrfToken = Cookies.get("csrftoken");
-  console.log(csrfToken, Cookies);
   return {
     mode: "cors",
     credential: "include",
@@ -162,4 +161,25 @@ export async function deleteHakidameData(params: { id: number }) {
   const { id } = params;
 
   await axios.delete(`${SERVER_URL}hakidame/${id}/`, GetDefaultHeader());
+}
+
+export async function createTag(params: { name: string }) {
+  const { name } = params;
+  const body = {
+    name,
+  };
+
+  const res = await axios.post(`${SERVER_URL}hakidame/tags/`, body, GetDefaultHeader());
+  const tags = await JSON.parse(JSON.stringify(res, getCircularReplacer()));
+  return tags;
+}
+
+export async function getTags() {
+  const res = await axios.get(
+    `${SERVER_URL}hakidame/tags/`,
+    GetDefaultHeader()
+  );
+  const tags = await JSON.parse(JSON.stringify(res, getCircularReplacer()));
+  console.log(tags)
+  return tags.data;
 }

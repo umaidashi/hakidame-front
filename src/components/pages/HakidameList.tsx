@@ -10,10 +10,7 @@ export default function HakidameList({
   hakidames: any[];
   isLoading: boolean;
 }) {
-  const router = useRouter();
-  console.log(isLoading);
-
-  console.log(hakidames)
+  // const router = useRouter();
 
   return (
     <Layout>
