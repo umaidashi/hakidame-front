@@ -1,35 +1,24 @@
 import HakidamePage from "@/components/pages/HakidamePage";
 import Head from "next/head";
-import { getAllHakidamesData, getHakidameData } from "@/lib/fetch";
+import axios from "axios";
+import useSWR from "swr";
+import { useRouter } from "next/router";
+const SERVER_URL = process.env.SERVER_URL;
 
-export default function Page({ hakidame }: any) {
+const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+
+export default function Page() {
+  const router = useRouter();
+  const { data, isLoading } = useSWR(
+    `${SERVER_URL}hakidame/${router.query.id}`,
+    fetcher
+  );
   return (
     <>
       <Head>
-        <title>{hakidame.title} | はきだめ</title>
+        <title>{!isLoading && data && data.title} | はきだめ</title>
       </Head>
-      <HakidamePage hakidame={hakidame} />
+      <HakidamePage hakidame={data} isLoading={isLoading} />
     </>
   );
-}
-
-export async function getStaticPaths() {
-  const hakidames = await getAllHakidamesData();
-  const paths = hakidames.data.map((hakidame: { id: number }) => ({
-    params: { id: String(hakidame.id) },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
-  const id = params.id;
-  const res = await getHakidameData(id);
-  const hakidame = res.data;
-  return {
-    props: { hakidame },
-    revalidate: 1,
-  };
 }

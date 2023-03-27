@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Layout from "../layout/Layout";
 
-export default function HakidameList({ hakidame }: any) {
+export default function HakidameList({ hakidame, isLoading }: any) {
+  if (isLoading) return <Layout>Loading</Layout>;
   const router = useRouter();
   const [newTitle, setNewTitle] = useState(hakidame.title);
   const [newDetail, setNewDetail] = useState(hakidame.detail);

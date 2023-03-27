@@ -7,7 +7,8 @@ const SERVER_URL = process.env.SERVER_URL;
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 export default function Home() {
-  const { data: data, isLoading } = useSWR(`${SERVER_URL}hakidame/`, fetcher);
+  const { data, isLoading } = useSWR(`${SERVER_URL}hakidame/`, fetcher);
+  console.log(data);
   return (
     <>
       <Head>

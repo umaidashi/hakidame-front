@@ -13,6 +13,8 @@ export default function HakidameList({
   const router = useRouter();
   console.log(isLoading);
 
+  console.log(hakidames)
+
   return (
     <Layout>
       <h2 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
