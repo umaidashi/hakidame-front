@@ -18,7 +18,9 @@ export default function Page() {
       <Head>
         <title>{!isLoading && data && data.title} | はきだめ</title>
       </Head>
-      <HakidamePage hakidame={data} isLoading={isLoading} />
+      {!isLoading && data && (
+        <HakidamePage hakidame={data} isLoading={isLoading} />
+      )}
     </>
   );
 }
